@@ -36,6 +36,7 @@
             color: var(--text);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            font-size: 16px;
         }
 
         .hero {
@@ -75,7 +76,7 @@
 
         .hero__names {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(48px, 12vw, 96px);
+            font-size: clamp(64px, 10vw, 120px);
             font-weight: 300;
             line-height: 1.1;
             margin-bottom: 32px;
@@ -141,7 +142,7 @@
         }
 
         .gallery-carousel {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
         }
@@ -155,12 +156,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 400px;
+            min-height: 500px;
         }
 
         .gallery-track img {
             max-width: 100%;
-            max-height: 500px;
+            max-height: 600px;
             width: auto;
             height: auto;
             display: block;
@@ -198,13 +199,13 @@
         }
 
         .container {
-            max-width: 680px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         .section {
-            padding: 100px 0;
+            padding: 80px 0;
             scroll-snap-align: start;
         }
 
@@ -237,7 +238,7 @@
         .info-card {
             background: var(--bg-card);
             border-radius: 24px;
-            padding: 48px;
+            padding: 56px;
             box-shadow: 0 4px 40px var(--shadow);
             text-align: center;
             margin: 40px 0;
@@ -257,20 +258,20 @@
 
         .info-card__title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+            font-size: 36px;
             margin-bottom: 8px;
         }
 
         .info-card__subtitle {
             color: var(--accent);
-            font-size: 13px;
+            font-size: 15px;
             letter-spacing: 2px;
             margin-bottom: 16px;
         }
 
         .info-card__text {
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.8;
         }
 
@@ -365,14 +366,14 @@
 
         .program-timeline__time {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
+            font-size: 40px;
             font-weight: 400;
             color: var(--accent);
             margin-bottom: 4px;
         }
 
         .program-timeline__title {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 500;
             margin-bottom: 4px;
         }
@@ -385,7 +386,7 @@
         .rsvp {
             background: var(--bg-card);
             border-radius: 32px;
-            padding: 64px 48px;
+            padding: 72px 56px;
             box-shadow: 0 8px 60px var(--shadow);
             margin: 60px 0;
         }
@@ -623,6 +624,26 @@
             form > div[style*="grid"] {
                 grid-template-columns: 1fr !important;
             }
+
+            .gallery-track {
+                min-height: auto;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .gallery-track img {
+                border-radius: 0;
+                box-shadow: none;
+                max-height: none;
+            }
+
+            .couple-gallery {
+                padding: 0;
+            }
+
+            .gallery-dots {
+                margin-top: 16px;
+            }
         }
     </style>
 </head>
@@ -743,17 +764,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Количество гостей</label>
-                        <select name="guests">
-                            <option value="1">1 гость</option>
-                            <option value="2" selected>2 гостя</option>
-                            <option value="3">3 гостя</option>
-                            <option value="4">4 гостя</option>
-                            <option value="5+">5 и более</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
                         <label>Предпочтения по еде</label>
                         <div class="checkbox-group">
                             <label><input type="checkbox" name="food" value="Мясо"> Мясо</label>
@@ -809,7 +819,7 @@
     </footer>
 
     <script>
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx31fcgb8GgLzfpdScuNa_Cp6mEL8jgTOC3I0Jfj_uxN7hRZqmz37RVwt8IaTAq6odj/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxrc9n1Ef5nmKDM9wZd6ajfhQTssewMGtIOJHH4XnhGI9fWXVAIqb6t1kvafozBJPz9/exec';
         
         document.getElementById('form').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -893,7 +903,13 @@
         track.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
             stopAutoSlide();
-        }, { passive: true });
+        }, { passive: false });
+
+        track.addEventListener('touchmove', (e) => {
+            if (Math.abs(touchStartX - e.changedTouches[0].screenX) > 10) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
         track.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
