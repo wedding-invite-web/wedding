@@ -242,8 +242,8 @@
         }
 
         .info-card__title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+            /* font-family: 'Cormorant Garamond', serif; */
+            font-size: 23px;
             margin-bottom: 8px;
         }
 
@@ -362,10 +362,14 @@
         }
 
         .rsvp__title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+            /* font-family: 'Cormorant Garamond', serif; */
+            font-size: 20px;
             text-align: center;
             margin-bottom: 8px;
+
+            /* font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 4px; */
         }
 
         .rsvp__subtitle {
@@ -384,9 +388,9 @@
         }
 
         .rsvp-info-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            font-weight: 500;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
             color: var(--accent);
             margin: 32px 0 12px 0;
         }
@@ -407,7 +411,6 @@
             font-size: 11px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: var(--text-muted);
             margin-bottom: 8px;
         }
 
@@ -645,7 +648,6 @@
             }
 
             .rsvp-section {
-                min-height: 100vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -741,7 +743,7 @@
     <section class="location-section">
         <div class="location-grid">
             <div class="location-left">
-                <div class="section__label">Программа дня</div>
+                <h4 class="section__label">Программа дня</h4>
                 <div class="program-timeline">
                     <div class="program-timeline__item">
                         <div class="program-timeline__time">14:00</div>
@@ -796,21 +798,6 @@
         </div>
     </section>
 
-<section class="faq-section">
-        <div class="faq-section__content">
-            <h3 class="rsvp__title">Полезная информация</h3>
-            <h4 class="rsvp-info-title">Дресс-код</h4>
-            <div class="rsvp-info-block">
-                <p>Мы настолько вдохновились поездкой в Японию, что решили добавить аутентичную тематику в наш праздник. Дресс-кода не будет, наряжайтесь в любимые наряды, но если захотите можете нас поддержать и выбрать что-то в азиатском стиле. Мы будем рады!</p>
-            </div>
-
-            <h4 class="rsvp-info-title">Дети</h4>
-            <div class="rsvp-info-block">
-                <p>Наш праздник планируется без детской программы и анимации. Если вам удобно, лучше оставить детей с близкими — так вы сможете насладиться вечером в полной мере.</p>
-            </div>
-        </div>
-    </section>
-
 <section class="rsvp-section">
         <div class="rsvp" id="rsvpForm">
             <h3 class="rsvp__title">Анкета</h3>
@@ -833,46 +820,20 @@
                     <div class="radio-group">
                         <label>
                             <input type="radio" name="attending" value="Да" required>
-                            <span>Да</span>
+                            <span>Да, с радостью</span>
                         </label>
                         <label>
                             <input type="radio" name="attending" value="Нет">
-                            <span>Нет</span>
+                            <span>Нет, к сожалению</span>
                         </label>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Количество гостей</label>
-                    <select name="guests">
-                        <option value="1">1 гость</option>
-                        <option value="2" selected>2 гостя</option>
-                        <option value="3">3 гостя</option>
-                        <option value="4">4 гостя</option>
-                        <option value="5+">5 и более</option>
-                    </select>
                 </div>
 
                 <div class="form-group">
                     <label>Предпочтения по еде</label>
                     <div class="checkbox-group">
-                        <label><input type="checkbox" name="food" value="Мясо"> Мясо</label>
-                        <label><input type="checkbox" name="food" value="Рыба"> Рыба</label>
-                        <label><input type="checkbox" name="food" value="Птица"> Птица</label>
-                        <label><input type="checkbox" name="food" value="Морепродукты"> Морепродукты</label>
-                        <label><input type="checkbox" name="food" value="Вегетарианское"> Вегетарианское</label>
-                        <label><input type="checkbox" name="food" value="Без ограничений"> Без ограничений</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Аллергены</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="allergy" value="Глютен"> Глютен</label>
-                        <label><input type="checkbox" name="allergy" value="Лактоза"> Лактоза</label>
-                        <label><input type="checkbox" name="allergy" value="Орехи"> Орехи</label>
-                        <label><input type="checkbox" name="allergy" value="Морепродукты"> Морепродукты</label>
-                        <label><input type="checkbox" name="allergy" value="Нет"> Нет</label>
+                        <label><input type="checkbox" name="food" value="Не ем мясо"> Не ем мясо</label>
+                        <label><input type="checkbox" name="food" value="Не ем морепродукты"> Не ем морепродукты</label>
                     </div>
                 </div>
 
@@ -902,9 +863,25 @@
         </div>
     </section>
 
+    <section class="faq-section">
+        <div class="faq-section__content">
+            <h3 class="rsvp__title">Полезная информация</h3>
+            <h4 class="rsvp-info-title">Дресс-код</h4>
+            <div class="rsvp-info-block">
+                <p>Мы настолько вдохновились поездкой в Японию, что решили добавить аутентичную тематику в наш праздник. Дресс-кода не будет, наряжайтесь в любимые наряды, но если захотите можете нас поддержать и выбрать что-то в азиатском стиле. Мы будем рады!</p>
+            </div>
+
+            <h4 class="rsvp-info-title">Дети</h4>
+            <div class="rsvp-info-block">
+                <p>Наш праздник планируется без детской программы и анимации. Если вам удобно, лучше оставить детей с близкими — так вы сможете насладиться вечером в полной мере.</p>
+            </div>
+        </div>
+    </section>
+
+
     <footer class="footer">
         <div class="footer__heart">♥</div>
-        С любовью, Антон & Александра
+        С любовью, Антон и Александра
     </footer>
 
     <script>
