@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Антон & Александра — Свадьба</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #faf9f7;
+            --text-color: #2c2c2c;
+            --accent-color: #8b7355;
+            --secondary-text: #666;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .hero .intro {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--secondary-text);
+            margin-bottom: 40px;
+        }
+
+        .hero .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        .hero .names span {
+            display: block;
+        }
+
+        .hero .ampersand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--accent-color);
+            margin: 10px 0;
+        }
+
+        .hero .date {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: var(--secondary-text);
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent-color);
+            margin: 60px auto;
+        }
+
+        .section {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            color: var(--secondary-text);
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .section .address {
+            margin-top: 16px;
+            font-size: 15px;
+            color: var(--text-color);
+        }
+
+        .map-container {
+            margin-top: 24px;
+            border-radius: 4px;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+        }
+
+        .address-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 14px;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 2px;
+            transition: opacity 0.3s ease;
+        }
+
+        .address-link:hover {
+            opacity: 0.7;
+        }
+
+        .program {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .program-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .program-item .time {
+            font-size: 13px;
+            color: var(--accent-color);
+            min-width: 60px;
+        }
+
+        .program-item .event {
+            font-size: 14px;
+        }
+
+        .rsvp-form {
+            margin-top: 50px;
+            text-align: left;
+            background: #fff;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+        }
+
+        .rsvp-form h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary-text);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 0;
+            border: none;
+            border-bottom: 1px solid #e0e0e0;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            color: var(--text-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom-color: var(--accent-color);
+        }
+
+        .form-group textarea {
+            resize: none;
+            min-height: 80px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 30px;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .radio-group input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background-color: var(--text-color);
+            color: #fff;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .success-message p {
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 80px 0 40px;
+            color: var(--secondary-text);
+            font-size: 12px;
+        }
+
+        .footer .heart {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 480px) {
+            .hero .names {
+                font-size: 42px;
+            }
+
+            .rsvp-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <p class="intro">Приглашение на свадьбу</p>
+            <div class="names">
+                <span>Антон</span>
+                <span class="ampersand">&</span>
+                <span>Александра</span>
+            </div>
+            <p class="date">08 • 08 • 2026</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="section">
+            <h2>Церемония и праздник</h2>
+            <p>8 августа 2026 года</p>
+            <p class="address">Нижне-Волжская набережная, 1В<br>Нижний Новгород<br>Ресторан Monet</p>
+            <a href="https://www.google.com/maps/search/Нижне-Волжская+набережная+1В+Нижний+Новгород" target="_blank" rel="noopener" class="address-link">Открыть на карте</a>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2137.1!2d44.0064!3d56.3315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTbCsDE5JzUyLjEiTiA0NMKwMDAnMjUuOCJF!5e0!3m2!1sru!2sru!4v1"
+                    width="100%" 
+                    height="250" 
+                    style="border:0;" 
+                    allowfullscreen 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="section">
+            <h2>Программа дня</h2>
+            <div class="program">
+                <div class="program-item">
+                    <span class="time">14:00</span>
+                    <span class="event">Церемония</span>
+                </div>
+                <div class="program-item">
+                    <span class="time">15:00</span>
+                    <span class="event">Банкет</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="section">
+            <h2>Подтверждение присутствия</h2>
+            <p>Пожалуйста, сообщите нам о своём решении<br>до 1 августа 2026 года</p>
+        </section>
+
+        <div class="rsvp-form" id="rsvpForm">
+            <h3>RSVP</h3>
+            <form id="form">
+                <div class="form-group">
+                    <label>Ваше имя</label>
+                    <input type="text" name="name" required placeholder="Как вас представить?">
+                </div>
+
+                <div class="form-group">
+                    <label>Вы придёте?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="attending" value="Да" required>
+                            Да, с радостью
+                        </label>
+                        <label>
+                            <input type="radio" name="attending" value="Нет">
+                            Нет, к сожалению
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Количество гостей</label>
+                    <select name="guests">
+                        <option value="1">1 гость</option>
+                        <option value="2" selected>2 гостя</option>
+                        <option value="3">3 гостя</option>
+                        <option value="4">4 гостя</option>
+                        <option value="5+">5 и более</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Комментарий</label>
+                    <textarea name="message" placeholder="Диетические предпочтения, вопросы..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Отправить</button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                <h3>Спасибо!</h3>
+                <p>Ваш ответ отправлен.<br>Мы будем рады видеть вас!</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>С любовью <span class="heart">&hearts;</span></p>
+        </footer>
+    </div>
+
+    <script>
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJ_Q5hXxdN5XtTgMmq7jOLY8ub_5PRdD7QgE8A3pfGTGie3L1luoCcMRESYlprs8ev/exec';
+        
+        document.getElementById('form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify(data)
+                });
+                
+                document.getElementById('form').style.display = 'none';
+                document.getElementById('successMessage').classList.add('show');
+            } catch (error) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Попробовать снова';
+                alert('Произошла ошибка. Попробуйте ещё раз.');
+            }
+        });
+    </script>
+</body>
+</html>
