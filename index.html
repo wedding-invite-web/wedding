@@ -338,10 +338,19 @@
             font-size: 14px;
         }
 
-        /* RSVP */
-        .rsvp-section {
-            padding: 80px 24px;
+        /* FAQ Section */
+        .faq-section {
+            display: flex;
+            justify-content: center;
+            scroll-snap-align: start;
         }
+
+        .faq-section__content {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        /* RSVP */
 
         .rsvp {
             max-width: 600px;
@@ -364,6 +373,29 @@
             color: var(--text-muted);
             font-size: 14px;
             margin-bottom: 32px;
+        }
+
+        .rsvp-info-block {
+            padding: 16px 24px 28px 24px;
+            background: rgba(176, 141, 106, 0.05);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .rsvp-info-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--accent);
+            margin: 32px 0 12px 0;
+        }
+
+        .rsvp-info-block p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text);
+            margin: 0;
         }
 
         .form-group {
@@ -660,6 +692,14 @@
                 border-radius: 16px;
                 padding: 32px 24px;
             }
+
+            .rsvp-info-block {
+                padding: 16px 20px 24px 20px;
+            }
+
+            .rsvp-info-title {
+                padding: 0 4px;
+            }
         }
     </style>
 </head>
@@ -756,9 +796,24 @@
         </div>
     </section>
 
-    <section class="rsvp-section">
+<section class="faq-section">
+        <div class="faq-section__content">
+            <h3 class="rsvp__title">Полезная информация</h3>
+            <h4 class="rsvp-info-title">Дресс-код</h4>
+            <div class="rsvp-info-block">
+                <p>Мы настолько вдохновились поездкой в Японию, что решили добавить аутентичную тематику в наш праздник. Дресс-кода не будет, наряжайтесь в любимые наряды, но если захотите можете нас поддержать и выбрать что-то в азиатском стиле. Мы будем рады!</p>
+            </div>
+
+            <h4 class="rsvp-info-title">Дети</h4>
+            <div class="rsvp-info-block">
+                <p>Наш праздник планируется без детской программы и анимации. Если вам удобно, лучше оставить детей с близкими — так вы сможете насладиться вечером в полной мере.</p>
+            </div>
+        </div>
+    </section>
+
+<section class="rsvp-section">
         <div class="rsvp" id="rsvpForm">
-            <h3 class="rsvp__title">Ответьте нам</h3>
+            <h3 class="rsvp__title">Анкета</h3>
             <p class="rsvp__subtitle">Мы будем рады видеть вас!</p>
 
             <form id="form">
