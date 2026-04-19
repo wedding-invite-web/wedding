@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Приглашение на свадьбу Антона и Александры. 08.08.2026, ресторан Monet, Нижний Новгород">
     <title>Антон & Александра — Свадьба</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +28,6 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-snap-type: y proximity;
         }
 
         body {
@@ -46,10 +46,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 40px 24px;
             position: relative;
-            overflow: hidden;
+            z-index: 2;
         }
 
         .hero::before {
@@ -83,6 +81,7 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 0.8s ease 0.2s forwards;
+            text-align: center;
         }
 
         .hero__names span {
@@ -104,28 +103,6 @@
             animation: fadeUp 0.8s ease 0.4s forwards;
         }
 
-        .hero__scroll {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.6s forwards;
-        }
-
-        .hero__scroll::before {
-            content: '';
-            display: block;
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
-            margin: 0 auto 8px;
-        }
-
-        .hero__scroll span {
-            font-size: 24px;
-            color: var(--accent);
-        }
 
         @keyframes fadeUp {
             to {
@@ -137,7 +114,7 @@
         /* Gallery */
         .couple-gallery {
             padding: 40px 0;
-            background: var(--bg);
+            background: transparent;
         }
 
         .gallery-carousel {
@@ -149,14 +126,14 @@
 
         .gallery-track {
             position: relative;
-            background: #ffffff;
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 500px;
+            touch-action: pan-y;
+            background: transparent;
         }
 
         .gallery-track img {
@@ -169,11 +146,11 @@
             user-select: none;
             border-radius: 12px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: absolute;
         }
 
-        .gallery-track img:not(:first-child) {
-            position: absolute;
-            opacity: 0;
+        .gallery-track img:first-child {
+            position: relative;
         }
 
         .gallery-dots {
@@ -212,12 +189,180 @@
             margin-bottom: 40px;
         }
 
+        .location-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .location-right {
+            /* optional styling for right column */
+        }
+
+        /* Venue Section */
+        .venue-section {
+            padding: 80px 24px;
+        }
+
+        .venue-grid {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .venue-section .info-card {
+            margin: 0;
+        }
+
+        .info-card .map-link {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 14px;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
+        }
+
+        .info-card .map-link:hover {
+            opacity: 0.7;
+        }
+
+        .venue-photos {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .venue-carousel {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: pan-y;
+        }
+
+        .venue-carousel img {
+            max-width: 100%;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            display: block;
+            transition: opacity 0.5s ease;
+            position: absolute;
+            border-radius: 12px;
+        }
+
+        .venue-carousel img:first-child {
+            position: relative;
+        }
+
+        .venue-carousel img:not(:first-child) {
+            opacity: 0;
+        }
+
+        .venue-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .venue-carousel-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .venue-carousel-dots .dot.active {
+            width: 24px;
+            border-radius: 4px;
+            background: var(--accent);
+        }
+
+        @media (max-width: 1023px) {
+            .venue-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .venue-section {
+                padding: 40px 16px;
+            }
+
+            .venue-carousel {
+                min-height: 200px;
+                border-radius: 12px;
+                padding: 5px;
+            }
+
+            .venue-carousel img {
+                border-radius: 12px;
+                max-height: 50vh;
+                max-width: 100%;
+                width: auto;
+                height: auto;
+                position: absolute;
+            }
+
+            .venue-carousel img:first-child {
+                position: relative;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .venue-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .venue-section {
+                padding: 40px 24px;
+            }
+
+            .venue-visual {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .image-placeholder {
+            text-align: center;
+            padding: 12px 0;
+        }
+
+        .image-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .map-wrapper--centered {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .photo-gallery__item--centered {
+            max-width: 800px;
+            margin: 24px auto 0;
+            padding: 0 24px;
+        }
+
         .section__label {
             font-size: 10px;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 16px;
+            z-index: 2;
         }
 
         .info-card {
@@ -342,7 +487,6 @@
         .faq-section {
             display: flex;
             justify-content: center;
-            scroll-snap-align: start;
         }
 
         .faq-section__content {
@@ -385,6 +529,7 @@
             border-radius: 16px;
             margin-bottom: 20px;
             border: 1px solid var(--border);
+            z-index: 2;
         }
 
         .rsvp-info-title {
@@ -400,6 +545,12 @@
             line-height: 1.7;
             color: var(--text);
             margin: 0;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
 
         .form-group {
@@ -581,7 +732,6 @@
                 display: grid;
                 grid-template-columns: 1fr 1.3fr;
                 min-height: 100vh;
-                scroll-snap-align: start;
             }
 
             .hero-wrapper .hero {
@@ -591,9 +741,6 @@
                 padding: 60px;
             }
 
-            .hero-wrapper .hero__scroll {
-                display: none;
-            }
 
             .hero-wrapper .couple-gallery {
                 display: flex;
@@ -621,11 +768,8 @@
             }
 
             .location-section {
-                min-height: 100vh;
                 display: flex;
                 align-items: center;
-                scroll-snap-align: start;
-                padding: 60px;
             }
 
             .location-section .location-grid {
@@ -641,28 +785,23 @@
 
             .location-section .program-timeline {
                 margin: 0;
+                z-index: 2;
             }
 
-            .location-section .program-timeline__time {
+            .program-timeline__time {
                 font-size: 40px;
+                z-index: 2;
             }
 
             .rsvp-section {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                scroll-snap-align: start;
             }
 
             .rsvp {
                 max-width: 700px;
-                padding: 64px;
-            }
-        }
-
-        @media (hover: none) and (pointer: coarse) {
-            html {
-                scroll-snap-type: none;
+                padding: 0px;
             }
         }
 
@@ -672,18 +811,19 @@
             }
 
             .gallery-track {
-                border-radius: 0;
-                box-shadow: none;
-                min-height: 300px;
+                border-radius: 16px;
+                min-height: 350px;
+                background: transparent;
             }
 
             .gallery-track img {
-                border-radius: 0;
+                border-radius: 12px;
                 box-shadow: none;
+                max-height: 50vh;
             }
 
             .couple-gallery {
-                padding: 0;
+                padding: 0 16px;
             }
 
             .radio-group {
@@ -693,20 +833,108 @@
             .rsvp {
                 border-radius: 16px;
                 padding: 32px 24px;
+                z-index: 2;
             }
 
             .rsvp-info-block {
                 padding: 16px 20px 24px 20px;
+                z-index: 2;
             }
 
             .rsvp-info-title {
                 padding: 0 4px;
             }
         }
+
+        /* Sakura branches */
+        .sakura-branch {
+            position: absolute;
+            top: -40px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        .sakura-left {
+            left: -40px;
+            width: 400px;
+        }
+
+        .sakura-right {
+            right: -40px;
+            width: 400px;
+        }
+
+        .hero-wrapper {
+            position: relative;
+        }
+
+        .sakura-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .sakura-mirror {
+            transform: scaleX(-1);
+        }
+
+        @media (max-width: 1023px) {
+            .hero-wrapper .gallery-carousel {
+                max-width: none;
+                padding: 0 16px;
+            }
+
+            .hero-wrapper .gallery-track {
+                height: auto;
+                min-height: 350px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 16px;
+                padding: 10px;
+            }
+
+            .hero-wrapper .gallery-track img {
+                max-height: 50vh;
+                max-width: 100%;
+                object-fit: contain;
+            }
+            .sakura-left {
+                left: -25px;
+            }
+            .sakura-right {
+                right: -25px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .sakura-branch {
+                display: none;
+            }
+
+            .location-right {
+                padding: 0 16px;
+            }
+
+            .rsvp-info-block {
+                padding: 16px 16px 24px 16px;
+            }
+
+            .rsvp-info-title {
+                padding: 0 16px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="hero-wrapper">
+        <div class="sakura-branch sakura-left">
+            <img src="pics/sakura.png" alt="Sakura branch" class="sakura-img">
+        </div>
+        <div class="sakura-branch sakura-right">
+            <img src="pics/sakura.png" alt="Sakura branch" class="sakura-img sakura-mirror">
+        </div>
         <section class="hero">
             <p class="hero__label">Приглашение на свадьбу</p>
             <div class="hero__names">
@@ -715,9 +943,6 @@
                 <span>Александра</span>
             </div>
             <p class="hero__date">08 • 08 • 2026</p>
-            <div class="hero__scroll">
-                <span>↓</span>
-            </div>
         </section>
 
         <section class="couple-gallery">
@@ -728,14 +953,9 @@
                     <img src="pics/photo3.jpg" alt="Фото 3">
                     <img src="pics/photo4.jpg" alt="Фото 4">
                     <img src="pics/photo5.jpg" alt="Фото 5">
+                    <img src="pics/photo6.jpg" alt="Фото 6">
                 </div>
-                <div class="gallery-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
+                <div class="gallery-dots"></div>
             </div>
         </section>
     </div>
@@ -746,152 +966,166 @@
                 <h4 class="section__label">Программа дня</h4>
                 <div class="program-timeline">
                     <div class="program-timeline__item">
-                        <div class="program-timeline__time">14:00</div>
-                        <div class="program-timeline__title">Церемония</div>
-                        <div class="program-timeline__desc">Торжественная регистрация брака</div>
+                        <div class="program-timeline__time">14:30</div>
+                        <div class="program-timeline__title">Cбор гостей </div>
+                        <div class="program-timeline__desc">Встречаемся, наслаждаемся фуршетом и настраиваемся на веселую свадьбу</div>
                     </div>
                     <div class="program-timeline__item">
                         <div class="program-timeline__time">15:00</div>
-                        <div class="program-timeline__title">Банкет</div>
-                        <div class="program-timeline__desc">Праздничный ужин</div>
+                        <div class="program-timeline__title">Cвадебная церемония </div>
+                        <div class="program-timeline__desc">Немного радостных и трогательных формальностей</div>
                     </div>
                     <div class="program-timeline__item">
-                        <div class="program-timeline__time">17:00</div>
-                        <div class="program-timeline__title">Тосты и поздравления</div>
-                        <div class="program-timeline__desc">Тосты от близких и друзей</div>
+                        <div class="program-timeline__time">16:00</div>
+                        <div class="program-timeline__title">Начало банкета </div>
+                        <div class="program-timeline__desc">Время вкусной еды, танцев и развлечений</div>
                     </div>
                     <div class="program-timeline__item">
-                        <div class="program-timeline__time">19:00</div>
-                        <div class="program-timeline__title">Танцы</div>
-                        <div class="program-timeline__desc">Танцевальная программа</div>
+                        <div class="program-timeline__time">20:00</div>
+                        <div class="program-timeline__title">Торт</div>
+                    </div>
+                        <div class="program-timeline__item">
+                        <div class="program-timeline__time">21:00</div>
+                        <div class="program-timeline__title">Дискотека</div>
                     </div>
                     <div class="program-timeline__item">
                         <div class="program-timeline__time">22:00</div>
-                        <div class="program-timeline__title">Завершение</div>
-                        <div class="program-timeline__desc">Финал вечера</div>
+                        <div class="program-timeline__title">Завершение банкета</div>
+                        <div class="program-timeline__desc">Надеемся, что наш праздник принесет массу положительных эмоций и запомнится на долгое время ❤️</div>
                     </div>
                 </div>
             </div>
             <div class="location-right">
-                <h4 class="section__label">Детали</h4>
+                <h4 class="section__label">Дорогие родные и близкие!</h4>
                 <div class="rsvp-info-block">
-                    <p>Мы настолько вдохновились поездкой в Японию, что решили добавить аутентичную тематику в наш праздник. Дресс-кода не будет, наряжайтесь в любимые наряды, но если захотите можете нас поддержать и выбрать что-то в азиатском стиле. Мы будем рады!</p>
+                    <p>Мы давно ждали момента, когда сможем разделить с вами самый важный и счастливый день с нашей жизни. Мы рады пригласить вас стать свидетелями нашей свадьбы и разделить с нами самые яркие моменты!</p>
+                </div>
+
+                <div class="image-placeholder">
+                    <img src="pics/craines.png">
                 </div>
             </div>
 
         </div>
     </section>
 
-    <section class="location-section">
+    <section class="venue-section">
+        <div class="venue-grid">
+            <div class="info-card">
+                <div class="info-card__icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                        <circle cx="12" cy="9" r="2.5"/>
+                    </svg>
+                </div>
+                <h2 class="info-card__title">Ресторан Monet</h2>
+                <p class="info-card__subtitle">Нижне-Волжская набережная, 1В</p>
+                <p class="info-card__text">Нижний Новгород</p>
+                <a href="https://yandex.ru/maps/?text=Monet+Нижний+Новгород" target="_blank" class="map-link">Посмотреть на карте →</a>
+            </div>
+        </div>
+        <div class="venue-photos">
+            <div class="venue-carousel">
+                <img src="https://avatars.mds.yandex.net/get-altay/16309283/2a00000197505484daa5a4edab337490ed40/XXXL" alt="Ресторан Monet 1">
+                <img src="pics/monet2.jpg" alt="Ресторан Monet 2">
+                <img src="pics/monet3.jpg" alt="Ресторан Monet 3">
+            </div>
+            <div class="venue-carousel-dots"></div>
+        </div>
+    </section>
+
+
+    <section class="rsvp-section">
         <div class="location-grid">
-                <div class="info-card">
-                    <div class="info-card__icon">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                            <circle cx="12" cy="9" r="2.5"/>
-                        </svg>
-                    </div>
-                    <h2 class="info-card__title">Ресторан Monet</h2>
-                    <p class="info-card__subtitle">Нижне-Волжская набережная, 1В</p>
-                    <p class="info-card__text">Нижний Новгород</p>
-                </div>
+            <div class="location-left">
+                <div class="rsvp" id="rsvpForm">
+                    <h3 class="rsvp__title" id="title">Анкета</h3>
+                    <p class="rsvp__subtitle" id="subtitle">Мы будем рады видеть вас!</p>
 
-                <div class="map-wrapper">
-                    <a href="https://yandex.ru/maps/?text=Monet+Нижний+Новгород" target="_blank">
-                        <img src="https://static-maps.yandex.ru/1.x/?ll=44.0064,56.3315&z=16&l=map&size=650,300&pt=44.0064,56.3315,pm2blm" alt="Карта">
-                    </a>
-                </div>
+                    <form id="form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Имя</label>
+                                <input type="text" name="firstName" required placeholder="Ваше имя">
+                            </div>
+                            <div class="form-group">
+                                <label>Фамилия</label>
+                                <input type="text" name="lastName" required placeholder="Ваша фамилия">
+                            </div>
+                        </div>
 
-                <div class="photo-gallery__item">
-                    <img src="https://avatars.mds.yandex.net/get-altay/16309283/2a00000197505484daa5a4edab337490ed40/XXXL" alt="Ресторан Monet">
-                </div>
-        </div>
-    </section>
+                        <div class="form-group">
+                            <label>Вы придёте?</label>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="attending" value="Да" required>
+                                    <span>Да, с радостью</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="attending" value="Нет">
+                                    <span>Нет, к сожалению</span>
+                                </label>
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            <label>Предпочтения по еде</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="food" value="Не ем мясо"> Не ем мясо</label>
+                                <label><input type="checkbox" name="food" value="Не ем морепродукты"> Не ем морепродукты</label>
+                            </div>
+                        </div>
 
-<section class="rsvp-section">
-        <div class="rsvp" id="rsvpForm">
-            <h3 class="rsvp__title">Анкета</h3>
-            <p class="rsvp__subtitle">Мы будем рады видеть вас!</p>
+                        <div class="form-group">
+                            <label>Алкоголь</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="alcohol" value="Вино"> Вино</label>
+                                <label><input type="checkbox" name="alcohol" value="Шампанское"> Шампанское</label>
+                                <label><input type="checkbox" name="alcohol" value="Водка"> Водка</label>
+                                <label><input type="checkbox" name="alcohol" value="Коньяк"> Коньяк</label>
+                                <label><input type="checkbox" name="alcohol" value="Не пью"> Не пью</label>
+                            </div>
+                        </div>
 
-            <form id="form">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                    <div class="form-group">
-                        <label>Имя</label>
-                        <input type="text" name="firstName" required placeholder="Ваше имя">
-                    </div>
-                    <div class="form-group">
-                        <label>Фамилия</label>
-                        <input type="text" name="lastName" required placeholder="Ваша фамилия">
-                    </div>
-                </div>
+                        <div class="form-group">
+                            <label>Ваши любимые музыкальные треки</label>
+                            <textarea name="music" placeholder="Один или несколько :)"></textarea>
+                        </div>
 
-                <div class="form-group">
-                    <label>Вы придёте?</label>
-                    <div class="radio-group">
-                        <label>
-                            <input type="radio" name="attending" value="Да" required>
-                            <span>Да, с радостью</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="attending" value="Нет">
-                            <span>Нет, к сожалению</span>
-                        </label>
-                    </div>
-                </div>
+                        <div class="form-group">
+                            <label>Комментарий</label>
+                            <textarea name="comment" placeholder="Дополнительные пожелания..."></textarea>
+                        </div>
 
-                <div class="form-group">
-                    <label>Предпочтения по еде</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="food" value="Не ем мясо"> Не ем мясо</label>
-                        <label><input type="checkbox" name="food" value="Не ем морепродукты"> Не ем морепродукты</label>
-                    </div>
-                </div>
+                        <button type="submit" class="btn" id="submitBtn">Отправить</button>
+                    </form>
 
-                <div class="form-group">
-                    <label>Алкоголь</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="alcohol" value="Вино"> Вино</label>
-                        <label><input type="checkbox" name="alcohol" value="Шампанское"> Шампанское</label>
-                        <label><input type="checkbox" name="alcohol" value="Водка"> Водка</label>
-                        <label><input type="checkbox" name="alcohol" value="Коньяк"> Коньяк</label>
-                        <label><input type="checkbox" name="alcohol" value="Не пью"> Не пью</label>
+                    <div class="success-message" id="successMessage">
+                        <h3>Спасибо!</h3>
+                        <p>Ваш ответ отправлен.<br>Мы будем рады видеть вас!</p>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label>Комментарий</label>
-                    <textarea name="message" placeholder="Дополнительные пожелания..."></textarea>
-                </div>
-
-                <button type="submit" class="btn" id="submitBtn">Отправить</button>
-            </form>
-
-            <div class="success-message" id="successMessage">
-                <h3>Спасибо!</h3>
-                <p>Ваш ответ отправлен.<br>Мы будем рады видеть вас!</p>
             </div>
-        </div>
-    </section>
+            <div class="location-right">
+                <section class="faq-section">
+                    <div class="faq-section__content">
+                        <h4 class="rsvp-info-title">Дресс-код</h4>
+                        <div class="rsvp-info-block">
+                            <p>Мы настолько вдохновились поездкой в Японию, что решили добавить аутентичную тематику в наш праздник. Дресс-кода не будет, наряжайтесь в любимые наряды, но если захотите можете нас поддержать и выбрать что-то в азиатском стиле. Мы будем рады!</p>
+                        </div>
 
-    <section class="faq-section">
-        <div class="faq-section__content">
-            <h3 class="rsvp__title">Полезная информация</h3>
-            <h4 class="rsvp-info-title">Дресс-код</h4>
-            <div class="rsvp-info-block">
-                <p>Мы настолько вдохновились поездкой в Японию, что решили добавить аутентичную тематику в наш праздник. Дресс-кода не будет, наряжайтесь в любимые наряды, но если захотите можете нас поддержать и выбрать что-то в азиатском стиле. Мы будем рады!</p>
+                        <h4 class="rsvp-info-title">Дети</h4>
+                        <div class="rsvp-info-block">
+                            <p>Наш праздник планируется без детской программы и анимации. Если вам удобно, лучше оставить детей с близкими — так вы сможете насладиться вечером в полной мере.</p>
+                        </div>
+
+                        <h4 class="rsvp-info-title">Цветы</h4>
+                        <div class="rsvp-info-block">
+                            <p>Мы знаем, что на свадьбах принято дарить цветы, но мы не успеем насладиться их красотой, ведь они так быстро завянут. Вместо букета мы будем рады бутылочке вашего любимого алкогольного напитка с пожеланием на какой повод нам ее открыть.</p>
+                        </div>
+                    </div>
+                </section>
             </div>
-
-            <h4 class="rsvp-info-title">Дети</h4>
-            <div class="rsvp-info-block">
-                <p>Наш праздник планируется без детской программы и анимации. Если вам удобно, лучше оставить детей с близкими — так вы сможете насладиться вечером в полной мере.</p>
-            </div>
-
-            <h4 class="rsvp-info-title">Цветы</h4>
-            <div class="rsvp-info-block">
-                <p>Мы знаем, что на свадьбах принято дарить цветы, но мы не успеем насладиться их красотой, ведь они так быстро завянут. Вместо букета мы будем рады бутылочке вашего любимого алкогольного напитка с пожеланием на какой повод нам ее открыть</p>
-            </div>
-
         </div>
     </section>
 
@@ -902,139 +1136,155 @@
     </footer>
 
     <script>
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxrc9n1Ef5nmKDM9wZd6ajfhQTssewMGtIOJHH4XnhGI9fWXVAIqb6t1kvafozBJPz9/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJQA0WjHwYqxTLUdNXpc4rE1vF7nvFnPemj3ig4eZrb5ek_fcIJhp-eBeNCy3nc_NS/exec';
 
         document.getElementById('form').addEventListener('submit', async function(e) {
             e.preventDefault();
-
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправка...';
-
             const formData = new FormData(this);
             const data = {};
-
             formData.forEach((value, key) => {
                 if (data[key]) {
-                    if (!Array.isArray(data[key])) {
-                        data[key] = [data[key]];
-                    }
+                    if (!Array.isArray(data[key])) data[key] = [data[key]];
                     data[key].push(value);
                 } else {
                     data[key] = value;
                 }
             });
-
             try {
-                await fetch(GOOGLE_SCRIPT_URL, {
+                // Отправляем как текст чтобы избежать CORS preflight
+                await fetch(SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
                     body: JSON.stringify(data)
                 });
-
                 document.getElementById('form').style.display = 'none';
+                document.getElementById('title').style.display = 'none';
+                document.getElementById('subtitle').style.display = 'none';
+
                 document.getElementById('successMessage').classList.add('show');
             } catch (error) {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Попробовать снова';
+                alert('Ошибка отправки. Попробуйте еще раз.');
             }
         });
 
-        const track = document.querySelector('.gallery-track');
-        const dots = document.querySelectorAll('.dot');
-        const images = track.querySelectorAll('img');
-        let currentIndex = 0;
-        let autoSlide;
+        // Gallery carousel
+        const gTrack = document.querySelector('.gallery-track');
+        const gDotsBox = document.querySelector('.gallery-dots');
+        const gImages = gTrack ? gTrack.querySelectorAll('img') : [];
+        let gIdx = 0, gTimer;
 
-        function goToSlide(index) {
-            if (index < 0) index = images.length - 1;
-            if (index >= images.length) index = 0;
-            currentIndex = index;
-            images.forEach((img, i) => {
-                img.style.opacity = i === currentIndex ? '1' : '0';
+        if (gTrack && gImages.length > 0) {
+            gImages.forEach((_, i) => {
+                const d = document.createElement('span');
+                d.className = 'dot' + (i === 0 ? ' active' : '');
+                d.addEventListener('click', () => { clearInterval(gTimer); gSlide(i); gTimer = setInterval(() => gSlide(gIdx + 1), 4000); });
+                gDotsBox.appendChild(d);
             });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
-            });
-        }
+            const gDots = gDotsBox.querySelectorAll('.dot');
 
-        function startAutoSlide() {
-            autoSlide = setInterval(() => goToSlide(currentIndex + 1), 4000);
-        }
-
-        function stopAutoSlide() {
-            clearInterval(autoSlide);
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                stopAutoSlide();
-                goToSlide(index);
-                startAutoSlide();
-            });
-        });
-
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        track.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            stopAutoSlide();
-        }, { passive: true });
-
-        track.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = Math.abs(touchEndX - touchStartX);
-            if (diff > 80 && diff < 200) {
-                if (touchEndX < touchStartX) goToSlide(currentIndex + 1);
-                else goToSlide(currentIndex - 1);
+            function gSlide(n) {
+                if (n < 0) n = gImages.length - 1;
+                if (n >= gImages.length) n = 0;
+                gIdx = n;
+                gImages.forEach((img, i) => { img.style.opacity = i === gIdx ? '1' : '0'; });
+                gDots.forEach((d, i) => { d.classList.toggle('active', i === gIdx); });
             }
-            startAutoSlide();
-        }, { passive: true });
 
-        let isDragging = false;
-        let startX = 0;
+            function gPlay() { gTimer = setInterval(() => gSlide(gIdx + 1), 4000); }
 
-        track.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX;
-            track.style.cursor = 'grabbing';
-            stopAutoSlide();
-            e.preventDefault();
-        });
-
-        track.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
+        let gSX = 0, gEX = 0, gTouchStartX = 0, gTouchStartY = 0;
+        gTrack.addEventListener('touchstart', (e) => {
+            gSX = e.changedTouches[0].screenX;
+            gTouchStartX = e.touches[0].clientX;
+            gTouchStartY = e.touches[0].clientY;
+            clearInterval(gTimer);
+        }, { passive: false });
+        gTrack.addEventListener('touchmove', (e) => {
+            if (e.touches.length !== 1) return;
+            const dx = Math.abs(e.touches[0].clientX - gTouchStartX);
+            const dy = Math.abs(e.touches[0].clientY - gTouchStartY);
+            if (dx > dy) e.preventDefault(); // Block browser gestures on horizontal swipe
+        }, { passive: false });
+        gTrack.addEventListener('touchend', (e) => {
+            gEX = e.changedTouches[0].screenX;
+            const d = Math.abs(gEX - gSX);
+            if (d > 80 && d < 200) { if (gEX < gSX) gSlide(gIdx + 1); else gSlide(gIdx - 1); }
+            gPlay();
         }, { passive: false });
 
-        track.addEventListener('mouseup', (e) => {
-            if (isDragging) {
-                const diff = startX - e.clientX;
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) goToSlide(currentIndex + 1);
-                    else goToSlide(currentIndex - 1);
-                }
-            }
-            isDragging = false;
-            track.style.cursor = 'grab';
-            startAutoSlide();
-        });
+            let gDrag = false, gMX = 0;
+            gTrack.addEventListener('mousedown', (e) => { gDrag = true; gMX = e.clientX; gTrack.style.cursor = 'grabbing'; clearInterval(gTimer); e.preventDefault(); });
+            gTrack.addEventListener('mousemove', (e) => { if (!gDrag) return; e.preventDefault(); }, { passive: false });
+            gTrack.addEventListener('mouseup', (e) => {
+                if (gDrag) { const d = gMX - e.clientX; if (Math.abs(d) > 50) { if (d > 0) gSlide(gIdx + 1); else gSlide(gIdx - 1); } }
+                gDrag = false; gTrack.style.cursor = 'grab'; gPlay();
+            });
+            gTrack.addEventListener('mouseleave', () => { if (gDrag) { gDrag = false; gTrack.style.cursor = 'grab'; gPlay(); } });
 
-        track.addEventListener('mouseleave', () => {
-            if (isDragging) {
-                isDragging = false;
-                track.style.cursor = 'grab';
-                startAutoSlide();
-            }
-        });
+            gTrack.style.cursor = 'grab'; gSlide(0); gPlay();
+        }
 
-        track.style.cursor = 'grab';
-        goToSlide(0);
-        startAutoSlide();
+        // Venue carousel
+        const vTrack = document.querySelector('.venue-carousel');
+        const vDotsBox = document.querySelector('.venue-carousel-dots');
+        const vImages = vTrack ? vTrack.querySelectorAll('img') : [];
+        let vIdx = 0, vTimer;
+
+        if (vTrack && vImages.length > 0) {
+            vImages.forEach((_, i) => {
+                const d = document.createElement('span');
+                d.className = 'dot' + (i === 0 ? ' active' : '');
+                d.addEventListener('click', () => { clearInterval(vTimer); vSlide(i); vTimer = setInterval(() => vSlide(vIdx + 1), 4000); });
+                vDotsBox.appendChild(d);
+            });
+            const vDots = vDotsBox.querySelectorAll('.dot');
+
+            function vSlide(n) {
+                if (n < 0) n = vImages.length - 1;
+                if (n >= vImages.length) n = 0;
+                vIdx = n;
+                vImages.forEach((img, i) => { img.style.opacity = i === vIdx ? '1' : '0'; });
+                vDots.forEach((d, i) => { d.classList.toggle('active', i === vIdx); });
+            }
+
+            function vPlay() { vTimer = setInterval(() => vSlide(vIdx + 1), 4000); }
+
+            let vSX = 0, vEX = 0, vTouchStartX = 0, vTouchStartY = 0;
+            vTrack.addEventListener('touchstart', (e) => {
+                vSX = e.changedTouches[0].screenX;
+                vTouchStartX = e.touches[0].clientX;
+                vTouchStartY = e.touches[0].clientY;
+                clearInterval(vTimer);
+            }, { passive: false });
+            vTrack.addEventListener('touchmove', (e) => {
+                if (e.touches.length !== 1) return;
+                const dx = Math.abs(e.touches[0].clientX - vTouchStartX);
+                const dy = Math.abs(e.touches[0].clientY - vTouchStartY);
+                if (dx > dy) e.preventDefault(); // Block browser gestures on horizontal swipe
+            }, { passive: false });
+            vTrack.addEventListener('touchend', (e) => {
+                vEX = e.changedTouches[0].screenX;
+                const d = Math.abs(vEX - vSX);
+                if (d > 80 && d < 200) { if (vEX < vSX) vSlide(vIdx + 1); else vSlide(vIdx - 1); }
+                vPlay();
+            }, { passive: false });
+
+            let vDrag = false, vMX = 0;
+            vTrack.addEventListener('mousedown', (e) => { vDrag = true; vMX = e.clientX; vTrack.style.cursor = 'grabbing'; clearInterval(vTimer); e.preventDefault(); });
+            vTrack.addEventListener('mousemove', (e) => { if (!vDrag) return; e.preventDefault(); }, { passive: false });
+            vTrack.addEventListener('mouseup', (e) => {
+                if (vDrag) { const d = vMX - e.clientX; if (Math.abs(d) > 50) { if (d > 0) vSlide(vIdx + 1); else vSlide(vIdx - 1); } }
+                vDrag = false; vTrack.style.cursor = 'grab'; vPlay();
+            });
+            vTrack.addEventListener('mouseleave', () => { if (vDrag) { vDrag = false; vTrack.style.cursor = 'grab'; vPlay(); } });
+
+            vTrack.style.cursor = 'grab'; vSlide(0); vPlay();
+        }
     </script>
 </body>
 </html>
