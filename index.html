@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Приглашение на свадьбу Антона и Александры. 08.08.2026, ресторан Monet, Нижний Новгород">
-    <title>Антон & Александра — Свадьба</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Приглашение на свадьбу Антона и Александры. 08.08.2026, ресторан Monet, Нижний Новгород">
+        <title>Антон & Александра — Свадьба</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://avatars.mds.yandex.net">
+        <link rel="dns-prefetch" href="https://avatars.mds.yandex.net">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #ffffff;
@@ -929,10 +931,10 @@
 <body>
     <div class="hero-wrapper">
         <div class="sakura-branch sakura-left">
-            <img src="pics/sakura.png" alt="Sakura branch" class="sakura-img">
+            <img src="pics/sakura.png" alt="Sakura branch" class="sakura-img" decoding="async">
         </div>
         <div class="sakura-branch sakura-right">
-            <img src="pics/sakura.png" alt="Sakura branch" class="sakura-img sakura-mirror">
+            <img src="pics/sakura.png" alt="Sakura branch" class="sakura-img sakura-mirror" decoding="async">
         </div>
         <section class="hero">
             <p class="hero__label">Приглашение на свадьбу</p>
@@ -947,12 +949,12 @@
         <section class="couple-gallery">
             <div class="gallery-carousel">
                 <div class="gallery-track">
-                    <img src="pics/photo1.jpg" alt="Фото 1">
-                    <img src="pics/photo2.jpg" alt="Фото 2">
-                    <img src="pics/photo3.jpg" alt="Фото 3">
-                    <img src="pics/photo4.jpg" alt="Фото 4">
-                    <img src="pics/photo5.jpg" alt="Фото 5">
-                    <img src="pics/photo6.jpg" alt="Фото 6">
+                    <img src="pics/photo1.jpg" alt="Фото 1" loading="eager" width="600" height="400">
+                    <img src="pics/photo2.jpg" alt="Фото 2" loading="lazy" width="600" height="400">
+                    <img src="pics/photo3.jpg" alt="Фото 3" loading="lazy" width="600" height="400">
+                    <img src="pics/photo4.jpg" alt="Фото 4" loading="lazy" width="600" height="400">
+                    <img src="pics/photo5.jpg" alt="Фото 5" loading="lazy" width="600" height="400">
+                    <img src="pics/photo6.jpg" alt="Фото 6" loading="lazy" width="600" height="400">
                 </div>
                 <div class="gallery-dots"></div>
             </div>
@@ -1024,11 +1026,11 @@
             </div>
         </div>
         <div class="venue-photos">
-            <div class="venue-carousel">
-                <img src="https://avatars.mds.yandex.net/get-altay/16309283/2a00000197505484daa5a4edab337490ed40/XXXL" alt="Ресторан Monet 1">
-                <img src="pics/monet2.jpg" alt="Ресторан Monet 2">
-                <img src="pics/monet3.jpg" alt="Ресторан Monet 3">
-            </div>
+                <div class="venue-carousel">
+                    <img src="https://avatars.mds.yandex.net/get-altay/16309283/2a00000197505484daa5a4edab337490ed40/XXXL" alt="Ресторан Monet 1" loading="eager" width="600" height="400">
+                    <img src="pics/monet2.jpg" alt="Ресторан Monet 2" loading="lazy" width="600" height="400">
+                    <img src="pics/monet3.jpg" alt="Ресторан Monet 3" loading="lazy" width="600" height="400">
+                </div>
             <div class="venue-carousel-dots"></div>
         </div>
     </section>
