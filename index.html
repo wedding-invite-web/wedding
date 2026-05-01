@@ -1238,7 +1238,7 @@
             gImages.forEach((_, i) => {
                 const d = document.createElement('span');
                 d.className = 'dot' + (i === 0 ? ' active' : '');
-                d.addEventListener('click', () => { clearInterval(gTimer); gSlide(i); gTimer = setInterval(() => gSlide(gIdx + 1), 4000); });
+                d.addEventListener('click', () => { clearInterval(gTimer); gSlide(i); gTimer = setInterval(() => gSlide(gIdx + 1), 1500); });
                 gDotsBox.appendChild(d);
             });
             const gDots = gDotsBox.querySelectorAll('.dot');
@@ -1251,7 +1251,7 @@
                 gDots.forEach((d, i) => { d.classList.toggle('active', i === gIdx); });
             }
 
-            function gPlay() { gTimer = setInterval(() => gSlide(gIdx + 1), 4000); }
+            function gPlay() { gTimer = setInterval(() => gSlide(gIdx + 1), 1500); }
 
         let gSX = 0, gEX = 0, gTouchStartX = 0, gTouchStartY = 0;
         gTrack.addEventListener('touchstart', (e) => {
@@ -1295,7 +1295,7 @@
             vImages.forEach((_, i) => {
                 const d = document.createElement('span');
                 d.className = 'dot' + (i === 0 ? ' active' : '');
-                d.addEventListener('click', () => { clearInterval(vTimer); vSlide(i); vTimer = setInterval(() => vSlide(vIdx + 1), 4000); });
+                d.addEventListener('click', () => { clearInterval(vTimer); vSlide(i); vTimer = setInterval(() => vSlide(vIdx + 1), 1500); });
                 vDotsBox.appendChild(d);
             });
             const vDots = vDotsBox.querySelectorAll('.dot');
@@ -1308,7 +1308,7 @@
                 vDots.forEach((d, i) => { d.classList.toggle('active', i === vIdx); });
             }
 
-            function vPlay() { vTimer = setInterval(() => vSlide(vIdx + 1), 4000); }
+            function vPlay() { vTimer = setInterval(() => vSlide(vIdx + 1), 1500); }
 
             let vSX = 0, vEX = 0, vTouchStartX = 0, vTouchStartY = 0;
             vTrack.addEventListener('touchstart', (e) => {
